@@ -1,0 +1,304 @@
+unit Unit12;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Mask, Vcl.DBCtrls, Vcl.ComCtrls, Data.DB, Data.Win.ADODB, Vcl.ExtDlgs;
+
+type
+  TForm12 = class(TForm)
+    Panel1: TPanel;
+    GroupBox1: TGroupBox;
+    Label33: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Edit14: TEdit;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Button3: TButton;
+    ListBox1: TListBox;
+    Button2: TButton;
+    Button4: TButton;
+    CheckBox1: TCheckBox;
+    ScrollBox1: TScrollBox;
+    Panel2: TPanel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label18: TLabel;
+    Label17: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Button1: TButton;
+    GroupBox2: TGroupBox;
+    Label2: TLabel;
+    Label1: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label11: TLabel;
+    Label10: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Image1: TImage;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    BirthDay: TDateTimePicker;
+    MilitaryAttitude: TComboBox;
+    BitBtn1: TBitBtn;
+    LastName: TEdit;
+    FirstName: TEdit;
+    FatherName: TEdit;
+    Nationality: TEdit;
+    AccountingCategory: TEdit;
+    Compound: TEdit;
+    MilitaryRanks: TEdit;
+    MilitaryUnit: TEdit;
+    NumberMilUnit: TEdit;
+    MilitaryReg: TEdit;
+    FitnessMS: TEdit;
+    Finished: TEdit;
+    NumberDocument: TEdit;
+    Seria2: TEdit;
+    NumberDocument2: TEdit;
+    Subdivision: TEdit;
+    AccountingGroup: TEdit;
+    CountryEducation: TEdit;
+    SeriaDocument: TEdit;
+    AcademicDegree: TEdit;
+    AcademicTitle: TEdit;
+    JobTitle: TEdit;
+    Phone: TEdit;
+    Email: TEdit;
+    ADOQuery1: TADOQuery;
+    IssueDate: TDateTimePicker;
+    OPicture: TOpenPictureDialog;
+    Panel3: TPanel;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton1: TSpeedButton;
+    procedure Button3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure ListBox1DblClick(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form12: TForm12;
+  photo: string;
+
+implementation
+     uses unit6;
+{$R *.dfm}
+
+procedure TForm12.BitBtn1Click(Sender: TObject);
+begin
+  if OPicture.Execute() then
+  begin
+    Image1.Picture.LoadFromFile(OPicture.FileName);
+    photo := ExtractFileName(OPicture.FileName);
+  end;
+end;
+
+procedure TForm12.Button1Click(Sender: TObject);
+var id,gender:string;
+begin
+  if radiobutton1.Checked then gender:='1'
+  else gender:='0';
+ adoquery1.SQL.Clear;
+  adoquery1.SQL.Text:='select id from Employees where CONCAT(LastName, '' '', FirstName, '' '', FatherName)='''+ListBox1.Items[ListBox1.ItemIndex]+'''';
+  adoquery1.Active:=true;
+  id:=adoquery1.FieldByName('id').AsString;
+  adoquery1.SQL.Clear;
+ adoquery1.SQL.Text:='update Employees set LastName='''+LastName.Text+''', FirstName='''+FirstName.Text+
+                      ''', FatherName='''+FatherName.Text+''', Nationality='''+Nationality.Text+
+                      ''', Gender='''+gender+''', BirthDay='''+FormatDateTime('yyyy-mm-dd', Birthday.Date)+
+                      ''', MilitaryAttitude='''+MilitaryAttitude.Text+''', AccountingGroup='''+AccountingGroup.Text+
+                      ''', AccountingCategory='''+AccountingCategory.Text+''', Compound='''+Compound.Text+
+                      ''', MilitaryRanks='''+MilitaryRanks.Text+''', MilitaryUnit='''+MilitaryUnit.Text+
+                      ''', NumberMilUnit='+NumberMilUnit.Text+', IssueDate='''+FormatDateTime('yyyy-mm-dd', IssueDate.Date)+
+                      ''', FitnessMS='''+FitnessMS.Text+''', MilitaryReg='''+MilitaryReg.Text+
+                      ''', Finished='''+Finished.Text+''', CounryEducation='''+CountryEducation.Text+
+                      ''', SeriaDocument='''+SeriaDocument.Text+''', NumberDocument='''+NumberDocument.Text+
+                      ''', AcademicDegree='''+AcademicDegree.Text+''', AcademicTitle='''+AcademicTitle.Text+
+                      ''', JobTitle='''+JobTitle.Text+''', Seria2='''+Seria2.Text+
+                      ''', NumberDocument2='''+NumberDocument2.Text+''', Subdivision='''+Subdivision.Text+
+                      ''', Phone='''+Phone.Text+''', Email='''+Email.Text+''', Photo2='''+photo+''' where id='+id;
+  adoquery1.ExecSQL;
+end;
+
+procedure TForm12.Button2Click(Sender: TObject);
+var gender:string;
+begin
+  if RadioButton1.Checked then  gender:='1'
+  else gender:='0';
+  adoquery1.SQL.Clear;
+ adoquery1.SQL.Text:='insert into Employees(FirstName,LastName,FatherName,Nationality,Gender,'+
+  'BirthDay,MilitaryAttitude,AccountingGroup,AccountingCategory,Compound,MilitaryRanks,MilitaryUnit,'+
+  'NumberMilUnit,FitnessMS,MilitaryReg,Finished,CounryEducation,SeriaDocument,NumberDocument,'+
+  'IssueDate,AcademicDegree,Seria2,NumberDocument2,AcademicTitle,JobTitle,Subdivision,Phone,'+
+  'Email, Photo2) values('''+FirstName.text+''','+QuotedStr(LastName.text)+','+QuotedStr(FatherName.text)+','+
+  QuotedStr(Nationality.text)+','+gender+','+QuotedStr(FormatDateTime('yyyy-mm-dd', BirthDay.Date))+','+
+  QuotedStr(MilitaryAttitude.text)+',' +QuotedStr(AccountingGroup.text)+','+QuotedStr(AccountingCategory.text)+','+
+  QuotedStr(Compound.text)+','+ QuotedStr(MilitaryRanks.text)+','+QuotedStr(MilitaryUnit.text)+','+
+  QuotedStr(NumberMilUnit.text)+','+QuotedStr(FitnessMS.text)+','+QuotedStr(MilitaryReg.text)+','+
+  QuotedStr(Finished.text)+','+QuotedStr(CountryEducation.text)+','+QuotedStr(SeriaDocument.text)+','+
+  QuotedStr(NumberDocument.text)+','+QuotedStr(FormatDateTime('yyyy-mm-dd', IssueDate.Date))+','+
+  QuotedStr(AcademicDegree.text)+','+QuotedStr(Seria2.text)+','+QuotedStr(NumberDocument2.text)+','+
+  QuotedStr(AcademicTitle.text)+','+QuotedStr(JobTitle.text)+','+QuotedStr(Subdivision.text)+','+
+  QuotedStr(Phone.text)+','+QuotedStr(Email.text)+','''+photo+''')';
+  adoquery1.ExecSQL;
+  Form12.FormCreate(Sender);
+end;
+
+procedure TForm12.Button3Click(Sender: TObject);
+begin
+  ListBox1.Items.Clear;
+  if (length(Edit1.Text)>0) and (length(Edit2.Text)>0) and (length(Edit14.Text)>0)  then
+  begin
+    ListBox1.Items.Add(Edit14.Text+' '+Edit1.Text+' '+Edit2.Text);
+    ListBox1.Font.Color:=clMenuHighLight;
+  end;
+end;
+
+procedure TForm12.Button4Click(Sender: TObject);
+var id:string;
+begin
+  adoquery1.SQL.Clear;
+  adoquery1.SQL.Text:='select id from Employees where CONCAT(LastName, '' '', FirstName, '' '', FatherName)='''+ListBox1.Items[ListBox1.ItemIndex]+'''';
+  adoquery1.Active:=true;
+  id:=adoquery1.FieldByName('id').AsString;
+   adoquery1.SQL.Clear;
+ adoquery1.SQL.Text:='delete  from  Timetable where teach_id='+id;
+ adoquery1.ExecSQL;
+ adoquery1.SQL.Clear;
+ adoquery1.SQL.Text:='delete  from  Employees where CONCAT(LastName, '' '', FirstName, '' '', FatherName)='''+ListBox1.Items[ListBox1.ItemIndex]+'''';
+ adoquery1.ExecSQL;
+ Form12.FormCreate(Sender);
+end;
+
+procedure TForm12.CheckBox1Click(Sender: TObject);
+begin
+ if checkbox1.checked then
+ begin
+  image1.Picture:=nil;
+  button1.Enabled:=False;
+  Button2.Enabled:=True;
+   MilitaryAttitude.Text:='';
+  FirstName.Text:='';
+  LastName.Text:='';
+  FatherName.Text:='';
+  Nationality.Text:='';
+ // BirthDay.Date:=adoquery1.FieldByName('BirthDay').AsDateTime;
+  AccountingGroup.Text:='';
+  AccountingCategory.Text:='';
+  Compound.Text:='';
+  MilitaryRanks.Text:='';
+  MilitaryUnit.Text:='';
+  FitnessMS.Text:='';
+  MilitaryReg.Text:='';
+  Finished.Text:='';
+  CountryEducation.Text:='';
+  SeriaDocument.Text:='';
+  NumberDocument.Text:='';
+  //IssueDate.Date:=adoquery1.FieldByName('IssueDate').AsDateTime;
+  AcademicDegree.Text:='';
+  Seria2.Text:='';
+  NumberDocument2.Text:='';
+  AcademicTitle.Text:='';
+  JobTitle.Text:='';
+  Subdivision.Text:='';
+  Phone.Text:='';
+  Email.Text:='';
+  NumberMilUnit.Text:='';
+  RadioButton1.Checked:=False;
+ end
+ else
+ button2.enabled:=false;
+end;
+
+procedure TForm12.FormCreate(Sender: TObject);
+begin
+  adoquery1.SQL.Clear;
+
+    adoquery1.SQL.Text:='select * from Employees';
+    adoquery1.Active:=True;
+    ListBox1.Items.Clear;
+    while not adoquery1.Eof do
+    begin
+
+      ListBox1.Font.Color:=$00804000;
+      ListBox1.Items.Add(adoquery1.FieldByName('LastName').AsString+' '+adoquery1.FieldByName('FirstName').AsString+' '+adoquery1.FieldByName('FatherName').AsString);
+      adoquery1.Next;
+
+    end;
+
+end;
+
+procedure TForm12.ListBox1DblClick(Sender: TObject);
+var gender:boolean;
+begin
+  button1.Enabled:=True;
+  adoquery1.SQL.Clear;
+  adoquery1.SQL.Text:='select * from Employees where CONCAT(LastName, '' '', FirstName, '' '', FatherName) = ''' + ListBox1.Items[ListBox1.ItemIndex] + '''';
+  adoquery1.Active:=True;
+  gender:=adoquery1.FieldByName('Gender').AsBoolean;
+  MilitaryAttitude.Text:=adoquery1.FieldByName('MilitaryAttitude').AsString;
+  FirstName.Text:=adoquery1.FieldByName('FirstName').AsString;
+  LastName.Text:=adoquery1.FieldByName('LastName').AsString;
+  FatherName.Text:=adoquery1.FieldByName('FatherName').AsString;
+  Nationality.Text:=adoquery1.FieldByName('Nationality').AsString;
+  BirthDay.Date:=adoquery1.FieldByName('BirthDay').AsDateTime;
+  AccountingGroup.Text:=adoquery1.FieldByName('AccountingGroup').AsString;
+  AccountingCategory.Text:=adoquery1.FieldByName('AccountingCategory').AsString;
+  Compound.Text:=adoquery1.FieldByName('Compound').AsString;
+  MilitaryRanks.Text:=adoquery1.FieldByName('MilitaryRanks').AsString;
+  MilitaryUnit.Text:=adoquery1.FieldByName('MilitaryUnit').AsString;
+  FitnessMS.Text:=adoquery1.FieldByName('FitnessMS').AsString;
+  MilitaryReg.Text:=adoquery1.FieldByName('MilitaryReg').AsString;
+  Finished.Text:=adoquery1.FieldByName('Finished').AsString;
+  CountryEducation.Text:=adoquery1.FieldByName('CounryEducation').AsString;
+  SeriaDocument.Text:=adoquery1.FieldByName('SeriaDocument').AsString;
+  NumberDocument.Text:=adoquery1.FieldByName('NumberDocument').AsString;
+  IssueDate.Date:=adoquery1.FieldByName('IssueDate').AsDateTime;
+  AcademicDegree.Text:=adoquery1.FieldByName('AcademicDegree').AsString;
+  Seria2.Text:=adoquery1.FieldByName('Seria2').AsString;
+  NumberDocument2.Text:=adoquery1.FieldByName('NumberDocument2').AsString;
+  AcademicTitle.Text:=adoquery1.FieldByName('AcademicTitle').AsString;
+  JobTitle.Text:=adoquery1.FieldByName('JobTitle').AsString;
+  Subdivision.Text:=adoquery1.FieldByName('Subdivision').AsString;
+  Phone.Text:=adoquery1.FieldByName('Phone').AsString;
+  Email.Text:=adoquery1.FieldByName('Email').AsString;
+  NumberMilUnit.Text:=adoquery1.FieldByName('NumberMilUnit').AsString;
+  Image1.Picture.LoadFromFile('C:\Users\ASUS\Desktop\msu\images\employees\'+
+    adoquery1.FieldByName('Photo2').AsString);
+  if Gender=True then
+   RadioButton1.Checked:=True
+  else
+    RadioButton1.Checked:=False;
+
+end;
+
+end.

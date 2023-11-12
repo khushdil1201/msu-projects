@@ -1,0 +1,92 @@
+unit Unit16;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TForm16 = class(TForm)
+    Panel1: TPanel;
+    DBGrid1: TDBGrid;
+    ADOQuery1: TADOQuery;
+    DataSource1: TDataSource;
+    GroupBox1: TGroupBox;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    RadioButton3: TRadioButton;
+    Edit1: TEdit;
+    Label1: TLabel;
+    Button1: TButton;
+    Button2: TButton;
+    GroupBox2: TGroupBox;
+    RadioButton4: TRadioButton;
+    RadioButton5: TRadioButton;
+    Button3: TButton;
+    Edit2: TEdit;
+    Label2: TLabel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    procedure Button1Click(Sender: TObject);
+    procedure RadioButton4Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form16: TForm16;
+
+implementation
+uses unit6,unit1;
+{$R *.dfm}
+
+procedure TForm16.Button1Click(Sender: TObject);
+begin
+  if radiobutton1.Checked then
+  begin
+    adoquery1.SQL.clear;
+    adoquery1.SQL.Text:='insert into speci(Name) values('''+Edit1.Text+''')';
+    adoquery1.ExecSQL;
+    adoquery1.SQL.clear;
+    adoquery1.SQL.Text:='select * from speci';
+    adoquery1.active:=true;
+  end;
+  if radiobutton3.checked then
+  begin
+    if not(dbgrid1.DataSource.DataSet.IsEmpty) then
+    begin
+      if messagedlg('¬ы уверены,что хотите удалить выбранную строку?',mtConfirmation,[mbYes,mbNo],0)=mrYes then
+      begin
+        dbgrid1.DataSource.DataSet.Delete;
+      end;
+
+    end;
+  end;
+  if radiobutton2.Checked then
+  begin
+
+     // dbgrid1.DataSource.DataSet.Bookmark:=dbgrid1.SelectedRows[0];
+      dbgrid1.DataSource.DataSet.Edit;
+      dbgrid1.DataSource.DataSet.FieldByName('Name').asString:=Edit1.Text;
+      dbgrid1.datasource.DataSet.Post;
+      dbgrid1.DataSource.DataSet.Refresh;
+
+  end;
+end;
+
+procedure TForm16.RadioButton4Click(Sender: TObject);
+begin
+   if radiobutton4.checked then
+   begin
+     adoquery1.SQL.Clear;
+     adoquery1.SQL.Text:='select * from speci order by name';
+     adoquery1.active:=true;
+   end;
+
+end;
+
+end.

@@ -1,0 +1,59 @@
+unit Unit15;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Data.Win.ADODB,
+  Vcl.ExtCtrls;
+
+type
+  TForm15 = class(TForm)
+    ComboBox1: TComboBox;
+    GroupBox1: TGroupBox;
+    Label33: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Edit14: TEdit;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Button3: TButton;
+    ADOQuery1: TADOQuery;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    CheckBox1: TCheckBox;
+    Panel3: TPanel;
+    CheckBox2: TCheckBox;
+    Panel4: TPanel;
+    CheckBox3: TCheckBox;
+    Panel5: TPanel;
+    CheckBox4: TCheckBox;
+    Panel6: TPanel;
+    CheckBox5: TCheckBox;
+    Panel7: TPanel;
+    CheckBox6: TCheckBox;
+    Panel8: TPanel;
+    CheckBox7: TCheckBox;
+    procedure Button3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form15: TForm15;
+
+implementation
+     uses unit6;
+{$R *.dfm}
+
+procedure TForm15.Button3Click(Sender: TObject);
+begin
+  if combobox1.ItemIndex=0 then
+  begin
+
+  end;
+end;
+
+end.

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899/12/30 00:00:00.000.137,=C:\Users\ASUS\Desktop\msu\Unit4.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.906,=C:\Users\ASUS\Desktop\msu\Unit3.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.941,C:\Users\ASUS\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\ASUS\Desktop\msu\Project1.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.586,=C:\Users\ASUS\Desktop\msu\Unit6.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.473,=C:\Users\ASUS\Desktop\msu\Unit5.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.774,C:\Users\ASUS\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\ASUS\Desktop\msu\Unit1.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.398,=C:\Users\ASUS\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.774,C:\Users\ASUS\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\ASUS\Desktop\msu\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.017,=C:\Users\ASUS\Desktop\msu\Unit2.pas</Transaction>
+    <Transaction>2023/08/17 17:52:55.000.257,=C:\Users\ASUS\Desktop\msu\Unit7.pas</Transaction>
+    <Transaction>2023/08/17 22:34:36.000.501,=C:\Users\ASUS\Desktop\msu\Unit8.pas</Transaction>
+    <Transaction>2023/08/20 15:44:06.000.692,=C:\Users\ASUS\Desktop\msu\Unit9.pas</Transaction>
+    <Transaction>2023/08/20 17:13:13.000.311,=C:\Users\ASUS\Desktop\msu\Unit10.pas</Transaction>
+    <Transaction>2023/08/20 18:00:49.000.766,=C:\Users\ASUS\Desktop\msu\Unit11.pas</Transaction>
+    <Transaction>2023/08/22 09:56:12.000.235,=C:\Users\ASUS\Desktop\msu\Unit12.pas</Transaction>
+    <Transaction>2023/08/23 17:03:49.000.369,=C:\Users\ASUS\Desktop\msu\Unit13.pas</Transaction>
+    <Transaction>2023/08/24 21:53:16.000.951,=C:\Users\ASUS\Desktop\msu\Unit14.pas</Transaction>
+    <Transaction>2023/08/29 00:49:29.000.868,=C:\Users\ASUS\Desktop\msu\Unit12.pas</Transaction>
+    <Transaction>2023/08/30 00:11:53.000.589,=C:\Users\ASUS\Desktop\msu\Unit15.pas</Transaction>
+    <Transaction>2023/09/07 00:43:47.000.777,=C:\Users\ASUS\Desktop\msu\Unit16.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Unit1.pas"/>
+    <File Path="Unit1.dfm"/>
+    <File Path="Unit2.pas"/>
+    <File Path="Unit2.dfm"/>
+    <File Path="Unit3.pas"/>
+    <File Path="Unit3.dfm"/>
+    <File Path="Unit4.pas"/>
+    <File Path="Unit4.dfm"/>
+    <File Path="Unit5.pas"/>
+    <File Path="Unit5.dfm"/>
+    <File Path="Unit6.pas"/>
+    <File Path="Unit6.dfm"/>
+    <File Path="Unit7.pas"/>
+    <File Path="Unit7.dfm"/>
+    <File Path="Unit8.pas"/>
+    <File Path="Unit8.dfm"/>
+    <File Path="Unit9.pas"/>
+    <File Path="Unit9.dfm"/>
+    <File Path="Unit10.pas"/>
+    <File Path="Unit10.dfm"/>
+    <File Path="Unit11.pas"/>
+    <File Path="Unit11.dfm"/>
+    <File Path="Unit13.pas"/>
+    <File Path="Unit13.dfm"/>
+    <File Path="Unit14.pas"/>
+    <File Path="Unit14.dfm"/>
+    <File Path="Unit12.pas"/>
+    <File Path="Unit12.dfm"/>
+    <File Path="Unit15.pas"/>
+    <File Path="Unit15.dfm"/>
+    <File Path="Unit16.pas"/>
+    <File Path="Unit16.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>
